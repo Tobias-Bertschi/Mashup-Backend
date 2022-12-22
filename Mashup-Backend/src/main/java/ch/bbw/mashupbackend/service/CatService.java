@@ -14,12 +14,10 @@ public class CatService {
 
     public String getCat() {
         try {
-            int width = random.nextInt(900) + 100;
-            int height = random.nextInt(900) + 100;
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> response = restTemplate.getForEntity(url + width + "/" + height, String.class);
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
-            return response.getBody();
+            return response.getBody().toString();
         } catch (
                 Exception e) {
             System.out.println(e);
