@@ -12,19 +12,19 @@ public class CatService {
     Random random = new Random();
     private String url = "https://cataas.com/cat/gif";
 
-    public String getCat() {
+    public byte[] getCat() {
         try {
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+            ResponseEntity<byte[]> response = restTemplate.getForEntity(url, byte[].class);
 
-            return response.getBody().toString();
-        } catch (
-                Exception e) {
+            return response.getBody();
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-        return "fail";
+        return null;
     }
+
 
     public Random getRandom() {
         return random;

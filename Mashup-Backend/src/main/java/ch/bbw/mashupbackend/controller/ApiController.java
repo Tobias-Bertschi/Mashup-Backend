@@ -33,7 +33,7 @@ public class ApiController {
     }
 
     @GetMapping("/cats")
-    public String getCats() {
+    public byte[] getCats() {
         return catService.getCat();
     }
 
