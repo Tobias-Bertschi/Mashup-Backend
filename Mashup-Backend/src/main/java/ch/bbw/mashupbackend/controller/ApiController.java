@@ -5,10 +5,12 @@ import ch.bbw.mashupbackend.service.FactService;
 import ch.bbw.mashupbackend.service.HoroscopeService;
 import ch.bbw.mashupbackend.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 public class ApiController {
 
