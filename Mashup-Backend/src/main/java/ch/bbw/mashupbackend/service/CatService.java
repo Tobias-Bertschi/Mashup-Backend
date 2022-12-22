@@ -10,7 +10,7 @@ import java.util.Random;
 public class CatService {
 
     Random random = new Random();
-    private String url = "http://placekitten.com/";
+    private String url = "https://cataas.com/cat/gif";
 
     public String getCat() {
         try {
