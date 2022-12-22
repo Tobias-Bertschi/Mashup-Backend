@@ -42,7 +42,7 @@ public class ApiController {
         return factService.getFact();
     }
 
-    @PostMapping("/horoscope")
+    @GetMapping("/horoscope")
     public String postHoroscope() {
         return horoscopeService.createHoroscope();
     }
