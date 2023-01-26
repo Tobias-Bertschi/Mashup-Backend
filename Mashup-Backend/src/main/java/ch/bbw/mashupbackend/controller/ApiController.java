@@ -1,5 +1,7 @@
 package ch.bbw.mashupbackend.controller;
 
+import ch.bbw.mashupbackend.model.Fact;
+import ch.bbw.mashupbackend.repository.FactRepository;
 import ch.bbw.mashupbackend.service.CatService;
 import ch.bbw.mashupbackend.service.FactService;
 import ch.bbw.mashupbackend.service.HoroscopeService;
@@ -7,12 +9,13 @@ import ch.bbw.mashupbackend.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
 public class ApiController {
+
+    private FactRepository factRepository;
 
     @Autowired
     final WeatherService weatherService;
@@ -20,7 +23,8 @@ public class ApiController {
     final FactService factService;
     final HoroscopeService horoscopeService;
 
-    public ApiController(WeatherService weatherService, CatService catService, FactService factService, HoroscopeService horoscopeService) {
+    public ApiController(FactRepository factRepository, WeatherService weatherService, CatService catService, FactService factService, HoroscopeService horoscopeService) {
+        this.factRepository = factRepository;
         this.weatherService = weatherService;
         this.catService = catService;
         this.factService = factService;
@@ -39,7 +43,11 @@ public class ApiController {
 
     @GetMapping("/fact")
     public String getFact() {
-        return factService.getFact();
+        Fact fact = new Fact();
+        fact.setData(factService.getFact());
+
+        //factRepository.save(fact);
+        return fact.getData();
     }
 
     @GetMapping("/horoscope")
